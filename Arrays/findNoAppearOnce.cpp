@@ -13,3 +13,18 @@
 	    }
 	    return -1;
 	}
+
+// https://leetcode.com/problems/single-number/
+
+    int singleNumber(vector<int>& nums) {
+        unordered_map<int, int> tmp;
+        for(int i=0; i<nums.size(); i+=1){
+            tmp[nums[i]]+=1;
+        }
+        for(int i=0; i<nums.size(); i+=1){
+            if(tmp[nums[i]]==1){
+                return nums[i];
+            }
+        }
+        return -1;
+    }
