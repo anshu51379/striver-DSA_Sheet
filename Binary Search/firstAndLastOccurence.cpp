@@ -35,3 +35,48 @@ vector<int> find(int arr[], int n , int x )
         return tmp;
     }
 }
+
+
+// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+class Solution {
+public:
+    int helper1(vector<int> arr, int x){
+        int low=0, high=arr.size()-1, tmp=-1;
+        int mid=low+(high-low)/2;
+        while(low<=high){
+            if(arr[mid]==x){
+                tmp=mid;
+                high=mid-1;
+            }else if(arr[mid]>x){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+            mid=low+(high-low)/2;
+        }
+        return tmp;
+    }
+    int helper2(vector<int> arr, int x){
+        int low=0, high=arr.size()-1, tmp=-1;
+        int mid=low+(high-low)/2;
+        while(low<=high){
+            if(arr[mid]==x){
+                tmp=mid;
+                low=mid+1;
+            }else if(arr[mid]>x){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+            mid=low+(high-low)/2;
+        }
+        return tmp;
+    }
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> ans;
+        ans.push_back(helper1(nums, target));
+        ans.push_back(helper2(nums, target));
+        return ans;
+    }
+};
