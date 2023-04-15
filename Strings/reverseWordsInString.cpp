@@ -97,3 +97,33 @@ int main()
     }
 }
 // } Driver Code Ends
+
+// https://leetcode.com/problems/reverse-words-in-a-string/
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        stack<string> tmp;
+        for(int i=0; i<s.size(); i+=1){
+            string word="";
+            if(s[i]==' '){
+                continue;
+            }
+            while(s[i]!=' ' and i<s.size()){
+                word+=s[i];
+                i+=1;
+            }
+            tmp.push(word);
+        }
+        string ans="";
+        while(!tmp.empty()){
+            ans+=tmp.top();
+            tmp.pop();
+            if(tmp.empty()){
+                break;
+            }
+            ans+=" ";
+        }
+        return ans;
+    }
+};
