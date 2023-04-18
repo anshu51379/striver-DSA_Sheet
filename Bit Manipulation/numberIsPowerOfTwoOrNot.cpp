@@ -51,3 +51,24 @@ int main()
 }
 
 // } Driver Code Ends
+
+
+
+// https://leetcode.com/problems/power-of-two/
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if(!n){
+            return false;
+        }
+        while((n>1)and(!(n&1))){
+            n=n>>1;
+        }
+        if(n==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
