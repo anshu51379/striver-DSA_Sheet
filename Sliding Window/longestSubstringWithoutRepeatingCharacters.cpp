@@ -49,3 +49,24 @@ int main()
 	return 0;
 }
 // } Driver Code Ends
+
+
+
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<int> tmp(256, -1);
+        int low=0, high=0, cnt=0;
+        while(high<s.size()){
+            if(tmp[s[high]]!=-1){
+                low=max(low, tmp[s[high]]+1);
+            }
+            tmp[s[high]]=high;
+            cnt=max(cnt, high-low+1);
+            high+=1;
+        }
+        return cnt;
+    }
+};
